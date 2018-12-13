@@ -1,0 +1,99 @@
+{% extends 'layouts/admin.twig' %}
+
+{% block title %}Sobre mi{% endblock %}
+
+{% block content %}
+  <body class="about">
+    {% include 'admin/header.twig' %}
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="text-center text-secondary">Sobre mi</h2>
+        </div>
+      </div>
+      {% if msg %}
+      <div class="row">
+        <div class="col-4 mx-auto bg-success text-light rounded my-3 p-2">
+          <p class="m-0 text-center">{{ msg }}</p>
+        </div>
+      </div>
+      {% endif %}
+      <form action="/sobre" method="post">
+        <div class="row">
+          <div class="form-group col-12 col-md-6">
+            <label for="name">Nombre completo</label>
+            <input class="form-control" type="text" name="name" id="name" required value="{{ about.name }}">
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <label for="degree">Profesión</label>
+            <input class="form-control" type="text" name="degree" id="degree" required value="{{ about.degree }}">
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <label for="birth">Fecha de nacimiento</label>
+            <input class="form-control text-center" type="date" name="birth" id="birth" required value="{{ about.birth }}">
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="row">
+              <div class="form-group col-3">
+                <label for="phone-ext">Ext.</label>
+                <select class="form-control" name="phone-ext" id="phone-ext">
+                  <option value="52">+52</option>
+                </select>
+              </div>
+              <div class="form-group col-9">
+                <label for="phone-number">Número de teléfono <span class="text-secondary">(555-444-1234)</span></label>
+                <input class="form-control" type="tel" name="phone-number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minlength="12" maxlength="12" id="phone-number" value="{{ about.phone_number }}">
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <label for="email">Email</label>
+            <input class="form-control" type="email" name="email" id="email" value="{{ about.email }}">
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="row">
+              <div class="form-group col-6">
+                <label for="state">Estado</label>
+                <select class="form-control" type="text" name="state" id="state" required>
+                  <option value="Veracruz">Veracruz</option>
+                </select>
+              </div>
+              <div class="form-group col-6">
+                <label for="city">Ciudad</label>
+                <select class="form-control" type="text" name="city" id="city" required>
+                  <option value="Boca del Rio">Boca del Rio</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-12">
+            <label for="description">Sobre ti</label>
+            <textarea class="form-control" name="description" id="description" cols="30" rows="5">{{ about.description }}</textarea>
+          </div>
+        </div>
+        <div class="row">
+          <h3 class="text-secondary mx-auto">Redes Sociales</h3>
+        </div>
+        <div class="row">
+          <div class="form-group col-12 col-md-6">
+            <label for="github-link">Github</label>
+            <input type="url" class="form-control" name="github-link" id="github-link" value="{{ about.github_link }}">
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <label for="twitter-link">Twitter</label>
+            <input type="url" class="form-control" name="twitter-link" id="twitter-link" value="{{ about.twitter_link }}">
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <label for="linkedin-link">Linkedin</label>
+            <input type="url" class="form-control" name="linkedin-link" id="linkedin-link" value="{{ about.linkedin_link }}">
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <label for="facebook-link">Facebook</label>
+            <input type="url" class="form-control" name="facebook-link" id="facebook-link" value="{{ about.facebook_link }}">
+          </div>
+          <button type="submit" class="btn btn-primary mx-auto my-5">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </body>
+{% endblock %}

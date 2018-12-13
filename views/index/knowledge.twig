@@ -1,0 +1,17 @@
+<div class="conocimientos">
+  <div class="row mb-5">
+    <h2 class="mx-auto">CONOCIMIENTOS</h2>
+  </div>
+  <div class="row">
+    {% for knowledge in knowledges %}
+      <div class="conocimiento my-2 col-12 col-sm-6">
+        <p class="mb-1">{{ knowledge.knowledge }} {{ knowledge.percentage }}%</p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: {{ knowledge.percentage }}%" aria-valuenow="{{ knowledge.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div><!-- .conocimentos -->
+</div><!-- .container -->
+</section><!-- section .sobre-mi -->

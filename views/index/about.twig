@@ -1,0 +1,61 @@
+<section class="datos-personales shadow-lg">
+  <div class="jumbotron bg-light mt-4 p-4">
+    <div class="row d-flex justify-content-between">
+      <div class="col-12 col-md-6">
+        <figure class="imagen figure rounded">
+          <img class="figure-img img-fluid" src="/assets/img/foto.jpg" alt="Daniel Ramírez">
+        </figure>
+      </div>
+      <div class="contenido col-12 col-md-5">
+        <p>Hola a todos, Yo soy</p>
+        <h1 class="font-weight-bold">{{ about.name }}</h2>
+          <p class="lead">{{ about.degree }}</p>
+          <div class="datos">
+            <p><i data-eva="calendar-outline" data-eva-fill="#137ed6"></i>{{ about.birth }}</p>
+            <p><i data-eva="phone-outline" data-eva-fill="#137ed6"></i>+{{ about.phone_ext }} {{ about.phone_number }}</p>
+            <p><i data-eva="email-outline" data-eva-fill="#137ed6"></i>{{ about.email }}</p>
+            <p><i data-eva="home-outline" data-eva-fill="#137ed6"></i>{{ about.city }}, {{ about.state }}</p>
+          </div>
+          <div class="redes-sociales text-center mt-4">
+            {% if about.github_link %}
+              <a class="bg-primary p-2 rounded d-inline-block mx-1" target="_blank" href="{{ about.github_link }}"><i data-eva="github-outline" data-eva-fill="white"></i>
+              </a>
+            {% endif %}
+            {% if about.twitter_link %}
+            <a class="bg-primary p-2 rounded d-inline-block mx-1" target="_blank" href="{{ about.twitter_link }}"><i data-eva="twitter-outline" data-eva-fill="white"></i>
+            </a>
+            {% endif %}
+            {% if about.linkedin_link %}
+            <a class="bg-primary p-2 rounded d-inline-block mx-1" target="_blank" href="{{ about.linkedin_link }}"><i data-eva="linkedin-outline" data-eva-fill="white"></i>
+            </a>
+            {% endif %}
+            {% if about.facebook_link %}
+            <a class="bg-primary p-2 rounded d-inline-block mx-1" target="_blank" href="{{ about.facebook_link }}"><i data-eva="facebook-outline" data-eva-fill="white"></i>
+            </a>
+            {% endif %}
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="seccion-blanca container-fluid bg-light"></div><!-- fondo blanco con position absolute -->
+
+<section class="sobre-mi container-fluid bg-light mt-5 pt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <h2 class="font-weight-bold mb-5">SOBRE MI</h2>
+        <p class="sobre-mi__texto text-secondary">
+          {% if about.description %}
+            {{ about.description }}
+          {% else %}
+            No has escrito una descripción tuya.
+          {% endif %}
+        </p>
+      </div>
+      <figure class="col-8 col-md-6 mx-auto">
+        {% include 'index/about-svg.twig' %}
+      </figure>
+    </div>

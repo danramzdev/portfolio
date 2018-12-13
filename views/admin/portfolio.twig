@@ -1,0 +1,45 @@
+{% extends 'layouts/admin.twig' %}
+
+{% block title %}Portafolio{% endblock %}
+
+{% block content %}
+  <body class="portafolio">
+    {% include 'admin/header.twig' %}
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="text-center text-secondary">Portafolios</h2>
+        </div>
+      </div>
+      <form action="/portafolio/subir" method="post">
+        {% if msg %}
+          <div class="row">
+            {% if msg.type == 'success' %}
+              <div class="col-8 bg-success rounded text-light mx-auto mb-3">{{ msg.msg }}</div>
+            {% elseif msg.type == 'error' %}
+              <div class="col-8 bg-danger rounded text-light mx-auto mb-3">{{ msg.msg }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="row">
+          <div class="form-group col-12 col-md-6">
+            <input class="form-control" type="text" name="name" placeholder="Nombre">
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <input class="form-control" type="text" name="technologies" placeholder="Tecnologias">
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <input class="form-control" type="text" name="link" placeholder="URL de proyecto">
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <input type="file" name="image">
+          </div>
+          <div class="form-group col-12">
+            <textarea class="form-control" name="description" placeholder="Descripción" cols="30" rows="10"></textarea>
+          </div>
+          <button class="btn btn-primary mx-auto" type="submit">Subir</button>
+        </div>
+      </form>
+    </div>
+  </body>
+{% endblock %}

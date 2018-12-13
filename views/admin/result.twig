@@ -1,0 +1,23 @@
+{% extends 'layouts/admin.twig' %}
+
+{% block title %}Resultado{% endblock %}
+
+{% block content %}
+  <body>
+    {% include 'admin/header.twig' %}
+    <div class="container my-5 ">
+      <div class="row">
+        {% if msg %}
+          <div class="col-4 mx-auto bg-success text-light rounded my-3 p-2" align="center">
+            <p class="m-0">{{ msg }}</p>
+          </div>
+        {% endif %}
+        {% if error %}
+          <div class="col-4 mx-auto bg-danger text-light rounded my-3 p-2" align="center">
+            <p class="m-0">{{ error }}</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+{% endblock %}
