@@ -3,6 +3,7 @@
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 use Aura\Router\RouterContainer;
+use App\Controllers\ErrorController;
 
 $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
     $_SERVER,
@@ -58,18 +59,14 @@ $map->post('addPortfolio', '/portafolio/subir', [
 	'controller' => 'App\Controllers\PortfolioController',
 	'action' => 'addPortfolio'
 ]);
-//Ruta de ruta no existente
-$map->get('404', '/404', [
-  'controller' => 'App\Controllers\ErrorController',
-  'action' => 'get404'
-]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 
 if (!$route) {
-	Echo 'error';
-  #header('Location: /404');
+  $controller = new ErrorController();
+  $response = $controller->get404();
+  echo $response->getBody();
 } else {
   $handler = $route->handler;
   $controllerName = $handler['controller'];
