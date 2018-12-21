@@ -15,9 +15,9 @@
         {% if msg %}
           <div class="row">
             {% if msg.type == 'success' %}
-              <div class="col-8 bg-success rounded text-light mx-auto mb-3">{{ msg.msg }}</div>
+              <div class="col-8 bg-success rounded text-light mx-auto mb-3 p-2">{{ msg.msg }}</div>
             {% elseif msg.type == 'error' %}
-              <div class="col-8 bg-danger rounded text-light mx-auto mb-3">{{ msg.msg }}</div>
+              <div class="col-8 bg-danger rounded text-light mx-auto mb-3 p-2">{{ msg.msg }}</div>
             {% endif %}
           </div>
         {% endif %}
@@ -29,10 +29,10 @@
             <input class="form-control" type="text" name="technologies" placeholder="Tecnologias">
           </div>
           <div class="form-group col-12 col-md-6">
-            <input class="form-control" type="text" name="link" placeholder="URL de proyecto">
+            <input class="form-control" type="url" name="link" placeholder="URL de proyecto">
           </div>
           <div class="form-group col-12 col-md-6">
-            <input type="file" name="image">
+            <input class="form-control" type="url" name="imageURL" placeholder="URL de imagen">
           </div>
           <div class="form-group col-12">
             <textarea class="form-control" name="description" placeholder="Descripción" cols="30" rows="10"></textarea>
