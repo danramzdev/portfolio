@@ -49,36 +49,36 @@
 
     {% if not edit %}
       <section class="knowledges-list">
-      <div class="container">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col">Conocimiento</th>
-              <th scope="col">Porcentaje</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for knowledge in knowledges %}
+        <div class="container">
+          <table class="table">
+            <thead>
               <tr>
-                <th scope="row">{{ knowledge.id }}</th>
-                <td>{{ knowledge.knowledge }}</td>
-                <td>{{ knowledge.percentage }}</td>
-                <td>
-                  <a class="mr-1" href="/conocimiento/editar/{{ knowledge.id }}">
-                    <i data-eva="edit-outline" data-eva-fill="blue"></i>
-                  </a>
-                  <a href="/conocimiento/eliminar/{{ knowledge.id }}">
-                    <i data-eva="trash-2-outline" data-eva-fill="red"></i>
-                  </a>
-                </td>
+                <th scope="col">id</th>
+                <th scope="col">Conocimiento</th>
+                <th scope="col">Porcentaje</th>
+                <th scope="col"></th>
               </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    </section>
+            </thead>
+            <tbody>
+              {% for knowledge in knowledges %}
+                <tr>
+                  <th scope="row">{{ knowledge.id }}</th>
+                  <td>{{ knowledge.knowledge }}</td>
+                  <td>{{ knowledge.percentage }}</td>
+                  <td>
+                    <a class="mr-1" href="/conocimiento/editar/{{ knowledge.id }}">
+                      <i data-eva="edit-outline" data-eva-fill="blue"></i>
+                    </a>
+                    <a href="/conocimiento/eliminar/{{ knowledge.id }}">
+                      <i data-eva="trash-2-outline" data-eva-fill="red"></i>
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
     {% endif %}
   </body>
 {% endblock %}

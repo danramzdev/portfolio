@@ -69,6 +69,18 @@ class PortfolioController extends BaseController {
     ));
   }
 
+  public function deletePortfolio($request, $route) {
+    $id = $route->attributes['id'];
+    $data = $this->portfolioById($id);
+    $data->delete();
+
+    $this->msg = 'Portafolio eliminado';
+
+    return $this->renderHTML('admin/result.twig', array(
+      'msg' => $this->msg
+    ));
+  }
+
   private function editPortfolio($edit_data, $new_data) {
     $edit_data->name = $new_data['name'];
     $edit_data->technologies = $new_data['technologies'];

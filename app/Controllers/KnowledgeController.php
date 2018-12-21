@@ -56,13 +56,6 @@ class KnowledgeController extends BaseController {
     ));
   }
 
-  private function editKnowledge($edit_data, $new_data) {
-    $edit_data->knowledge = $new_data['knowledge'];
-    $edit_data->percentage = $new_data['percentage'];
-    $edit_data->update();
-    $this->msg = 'Conocimiento editado';
-  }
-
   public function deleteKnowledge($request, $route) {
     $id = $route->attributes['id'];
     $data = $this->knowledgeById($id);
@@ -73,6 +66,13 @@ class KnowledgeController extends BaseController {
     return $this->renderHTML('admin/result.twig', array(
       'msg' => $this->msg
     ));
+  }
+
+  private function editKnowledge($edit_data, $new_data) {
+    $edit_data->knowledge = $new_data['knowledge'];
+    $edit_data->percentage = $new_data['percentage'];
+    $edit_data->update();
+    $this->msg = 'Conocimiento editado';
   }
 
   private function knowledgeById($id) {

@@ -67,6 +67,10 @@ $map->post('editPortfolio', '/portafolio/editar/{id}', [
 	'controller' => 'App\Controllers\PortfolioController',
 	'action' => 'getEditPortfolio'
 ]);
+$map->get('deletePortfolio', '/portafolio/eliminar/{id}', [
+	'controller' => 'App\Controllers\PortfolioController',
+	'action' => 'deletePortfolio'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
