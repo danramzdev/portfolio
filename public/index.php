@@ -59,6 +59,14 @@ $map->post('addPortfolio', '/portafolio/subir', [
 	'controller' => 'App\Controllers\PortfolioController',
 	'action' => 'addPortfolio'
 ]);
+$map->get('getEditPortfolio', '/portafolio/editar/{id}', [
+	'controller' => 'App\Controllers\PortfolioController',
+	'action' => 'getEditPortfolio'
+]);
+$map->post('editPortfolio', '/portafolio/editar/{id}', [
+	'controller' => 'App\Controllers\PortfolioController',
+	'action' => 'getEditPortfolio'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);

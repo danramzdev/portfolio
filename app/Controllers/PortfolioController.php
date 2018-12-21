@@ -6,12 +6,17 @@ use App\Models\Portfolio;
 use Respect\Validation\Validator as v;
 
 class PortfolioController extends BaseController {
+  protected $msg = [];
+
 	public function getPortfolio() {
-		return $this->renderHTML('admin/portfolio.twig');
+    $portfolios = Portfolio::all();
+
+		return $this->renderHTML('admin/portfolio.twig', [
+      'portfolios' => $portfolios
+    ]);
 	}
 
 	public function addPortfolio($request) {
-		$msg = [];
 		if ($request->getMethod() == 'POST') {
 			$data = $request->getParsedBody();
 			$portfolioValidator = v::key('name', v::stringType()->length(1,32))
@@ -30,12 +35,12 @@ class PortfolioController extends BaseController {
         $portfolio->image = $data['image'];
 				$portfolio->save();
 
-				$msg = [
+				$this->msg = [
 					'type' => 'success',
 					'msg' => 'Portafolio guardado'
 				];
 			} catch (\Exception $e) {
-				$msg = [
+				$this->msg = [
 					'type' => 'error',
 					'msg' => 'Error al guardar portafolio' . $e->getMessage()
 				];
@@ -43,7 +48,41 @@ class PortfolioController extends BaseController {
 		}
 
 		return $this->renderHTML('admin/portfolio.twig', [
-			'msg' => $msg
+			'msg' => $this->msg
 		]);
-	}
+  }
+  
+  public function getEditPortfolio($request, $route) {
+    $id = $route->attributes['id'];
+    $edit_data = $this->portfolioById($id);
+    $new_data = $request->getParsedBody();
+
+    if ($request->getMethod() == 'POST') {
+      $this->editPortfolio($edit_data, $new_data);
+    }
+
+    return $this->renderHTML('admin/portfolio.twig', array(
+      'edit' => true,
+      'id' => $id,
+      'editData' => $edit_data,
+      'msg' => $this->msg
+    ));
+  }
+
+  private function editPortfolio($edit_data, $new_data) {
+    $edit_data->name = $new_data['name'];
+    $edit_data->technologies = $new_data['technologies'];
+    $edit_data->link = $new_data['link'];
+    $edit_data->image = $new_data['image'];
+    $edit_data->description = $new_data['description'];
+    $edit_data->update();
+    $this->msg = [
+      'type' => 'success',
+      'msg' => 'Portafolio editado'
+    ];
+  }
+
+  private function portfolioById($id) {
+    return Portfolio::where('id', $id)->first();
+  }
 }

@@ -11,7 +11,11 @@
           <h2 class="text-center text-secondary">Portafolios</h2>
         </div>
       </div>
-      <form action="/portafolio/subir" method="post">
+      {% if edit %}
+        <form action="/portafolio/editar/{{ editData['id'] }}" method="post">
+      {% else %}
+        <form action="/portafolio/subir" method="post">
+      {% endif %}
         {% if msg %}
           <div class="row">
             {% if msg.type == 'success' %}
@@ -21,25 +25,87 @@
             {% endif %}
           </div>
         {% endif %}
-        <div class="row">
-          <div class="form-group col-12 col-md-6">
-            <input class="form-control" type="text" name="name" placeholder="Nombre">
+        {% if edit %}
+          <div class="row">
+            <div class="form-group col-12 col-md-6">
+              <input class="form-control" type="text" name="name" placeholder="Nombre" value="{{ editData['name'] }}">
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input class="form-control" type="text" name="technologies" placeholder="Tecnologias" value="{{ editData['technologies'] }}">
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input class="form-control" type="url" name="link" placeholder="URL de proyecto" value="{{ editData['link'] }}">
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input class="form-control" type="url" name="image" placeholder="URL de imagen" value="{{ editData['image'] }}">
+            </div>
+            <div class="form-group col-12">
+              <textarea class="form-control" name="description" placeholder="Descripción" cols="30" rows="10">{{ editData['description'] }}</textarea>
+            </div>
+            <button class="btn btn-primary mx-auto" type="submit">Guardar</button>
           </div>
-          <div class="form-group col-12 col-md-6">
-            <input class="form-control" type="text" name="technologies" placeholder="Tecnologias">
+        {% else %}
+          <div class="row">
+            <div class="form-group col-12 col-md-6">
+              <input class="form-control" type="text" name="name" placeholder="Nombre">
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input class="form-control" type="text" name="technologies" placeholder="Tecnologias">
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input class="form-control" type="url" name="link" placeholder="URL de proyecto">
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input class="form-control" type="url" name="image" placeholder="URL de imagen">
+            </div>
+            <div class="form-group col-12">
+              <textarea class="form-control" name="description" placeholder="Descripción" cols="30" rows="10"></textarea>
+            </div>
+            <button class="btn btn-primary mx-auto" type="submit">Subir</button>
           </div>
-          <div class="form-group col-12 col-md-6">
-            <input class="form-control" type="url" name="link" placeholder="URL de proyecto">
-          </div>
-          <div class="form-group col-12 col-md-6">
-            <input class="form-control" type="url" name="image" placeholder="URL de imagen">
-          </div>
-          <div class="form-group col-12">
-            <textarea class="form-control" name="description" placeholder="Descripción" cols="30" rows="10"></textarea>
-          </div>
-          <button class="btn btn-primary mx-auto" type="submit">Subir</button>
-        </div>
+        {% endif %}
       </form>
     </div>
+    {% if not edit %}
+      <section class="portfolio-list">
+        <div class="container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Tecnologias</th>
+                <th scope="col">Enlace</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Descripción</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for portfolio in portfolios %}
+                <tr>
+                  <th scope="row">{{ portfolio.id }}</th>
+                  <td>{{ portfolio.name }}</td>
+                  <td>{{ portfolio.technologies }}</td>
+                  <td>{{ portfolio.link }}</td>
+                  <td>{{ portfolio.image }}</td>
+                  <td>{{ portfolio.description }}</td>
+                  <td>
+                    <a class="mr-1" href="/portafolio/editar/{{ portfolio.id }}">
+                      editar
+                      {# <i data-eva="edit-outline" data-eva-fill="blue"></i> #}
+                    </a>
+                    <a href="/portafolio/eliminar/{{ portfolio.id }}">
+                      eliminar
+                      {# <i data-eva="trash-2-outline" data-eva-fill="red"></i> #}
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    {% endif %}
   </body>
 {% endblock %}
