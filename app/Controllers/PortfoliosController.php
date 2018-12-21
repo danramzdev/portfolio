@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\Portfolio;
 use Respect\Validation\Validator as v;
 
-class PortfolioController extends BaseController {
+class PortfoliosController extends BaseController {
   protected $msg = [];
 
 	public function getPortfolio() {

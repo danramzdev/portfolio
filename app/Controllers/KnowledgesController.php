@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Knowledge;
 
-class KnowledgeController extends BaseController {
+class KnowledgesController extends BaseController {
   protected $msg = '';
   protected $error = '';
 

@@ -22,53 +22,53 @@ $map->get('index', '/', [
 ]);
 //Rutas de conocimiento
 $map->get('knowledge', '/conocimiento', [
-  'controller' => 'App\Controllers\KnowledgeController',
+  'controller' => 'App\Controllers\KnowledgesController',
   'action' => 'getKnowledgeForm'
 ]);
 $map->post('addKnowledge', '/conocimiento/subir', [
-  'controller' => 'App\Controllers\KnowledgeController',
+  'controller' => 'App\Controllers\KnowledgesController',
   'action' => 'addKnowledge'
 ]);
 $map->get('getEditKnowledge', '/conocimiento/editar/{id}', [
-  'controller' => 'App\Controllers\KnowledgeController',
+  'controller' => 'App\Controllers\KnowledgesController',
   'action' => 'getEditKnowledge'
 ]);
 $map->post('editKnowledge', '/conocimiento/editar/{id}', [
-  'controller' => 'App\Controllers\KnowledgeController',
+  'controller' => 'App\Controllers\KnowledgesController',
   'action' => 'getEditKnowledge'
 ]);
 $map->get('deleteKnowledge', '/conocimiento/eliminar/{id}', [
-  'controller' => 'App\Controllers\KnowledgeController',
+  'controller' => 'App\Controllers\KnowledgesController',
   'action' => 'deleteKnowledge'
 ]);
 //Rutas de sobre mi
 $map->get('about', '/sobre', [
-  'controller' => 'App\Controllers\AboutController',
+  'controller' => 'App\Controllers\AboutsController',
   'action' => 'getAbout'
 ]);
 $map->post('aboutSave', '/sobre', [
-  'controller' => 'App\Controllers\AboutController',
+  'controller' => 'App\Controllers\AboutsController',
   'action' => 'getAbout'
 ]);
 //Ruta de portafolio
 $map->get('portfolio', '/portafolio', [
-	'controller' => 'App\Controllers\PortfolioController',
+	'controller' => 'App\Controllers\PortfoliosController',
 	'action' => 'getPortfolio'
 ]);
 $map->post('addPortfolio', '/portafolio/subir', [
-	'controller' => 'App\Controllers\PortfolioController',
+	'controller' => 'App\Controllers\PortfoliosController',
 	'action' => 'addPortfolio'
 ]);
 $map->get('getEditPortfolio', '/portafolio/editar/{id}', [
-	'controller' => 'App\Controllers\PortfolioController',
+	'controller' => 'App\Controllers\PortfoliosController',
 	'action' => 'getEditPortfolio'
 ]);
 $map->post('editPortfolio', '/portafolio/editar/{id}', [
-	'controller' => 'App\Controllers\PortfolioController',
+	'controller' => 'App\Controllers\PortfoliosController',
 	'action' => 'getEditPortfolio'
 ]);
 $map->get('deletePortfolio', '/portafolio/eliminar/{id}', [
-	'controller' => 'App\Controllers\PortfolioController',
+	'controller' => 'App\Controllers\PortfoliosController',
 	'action' => 'deletePortfolio'
 ]);
 

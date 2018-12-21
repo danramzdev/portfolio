@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\About;
 
-class AboutController extends BaseController {
+class AboutsController extends BaseController {
   protected $msg;
 
   public function getAbout($request) {
