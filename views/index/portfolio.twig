@@ -2,62 +2,22 @@
   <div class="container py-5">
     <h2 class="text-center mb-5">PORTAFOLIO</h3>
       <div class="trabajos">
-        <div class="row rounded shadow border p-1 mb-4 trabajo">
-          <figure class="col-12 col-md-5 trabajo__imagen">
-            <img src="./assets/img/angelarium-400.jpg" alt="angelarium">
-          </figure>
-          <div class="col-12 col-md-7 p-3 trabajo__info">
-            <a class="enlace" href="https://arcangeluz.com" target="_blank">
-              <h4>Arcangeluz</h4>
-            </a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, quasi quia sapiente in eveniet minima itaque odit ut hic eos illum rem consectetur, velit excepturi quibusdam quisquam voluptate nemo id iusto, possimus odio, illo laborum. Cum, modi? Voluptatum, maiores harum.</p>
-            <div class="tecnologias">
-              <p class="m-0">Tecnologias: <span>HTML, CSS(Sass), PHP, MySQL</span></p>
+        {% for portfolio in portfolios %}
+          <div class="row rounded shadow border p-1 mb-4 trabajo">
+            <figure class="col-12 col-md-5 trabajo__imagen">
+              <img src="{{ portfolio.image }}" alt="{{ portfolio.name }}">
+            </figure>
+            <div class="col-12 col-md-7 p-3 trabajo__info">
+              <a class="enlace" href="{{ portfolio.link }}" target="_blank">
+                <h4>{{ portfolio.name }}</h4>
+              </a>
+              <p>{{ portfolio.description }}</p>
+              <div class="tecnologias">
+                <p class="m-0">Tecnologias: <span>{{ portfolio.technologies }}</span></p>
+              </div>
             </div>
-          </div>
-        </div><!-- .trabajo -->
-        <div class="row rounded shadow border p-1 mb-4 trabajo">
-          <figure class="col-12 col-md-4 trabajo__imagen">
-            <img src="./assets/img/angelarium-400.jpg" alt="angelarium">
-          </figure>
-          <div class="col-12 col-md-8 p-3 trabajo__info">
-            <a class="enlace" href="https://arcangeluz.com" target="_blank">
-              <h4>Arcangeluz</h4>
-            </a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, quasi quia sapiente in eveniet minima itaque odit ut hic eos illum rem consectetur, velit excepturi quibusdam quisquam voluptate nemo id iusto, possimus odio, illo laborum. Cum, modi? Voluptatum, maiores harum.</p>
-            <div class="tecnologias">
-              <p class="m-0">Tecnologias: <span>HTML, CSS(Sass), PHP, MySQL</span></p>
-            </div>
-          </div>
-        </div><!-- .trabajo -->
-        <div class="row rounded shadow border p-1 mb-4 trabajo">
-          <figure class="col-12 col-md-4 trabajo__imagen">
-            <img src="./assets/img/angelarium-400.jpg" alt="angelarium">
-          </figure>
-          <div class="col-12 col-md-8 p-3 trabajo__info">
-            <a class="enlace" href="https://arcangeluz.com" target="_blank">
-              <h4>Arcangeluz</h4>
-            </a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, quasi quia sapiente in eveniet minima itaque odit ut hic eos illum rem consectetur, velit excepturi quibusdam quisquam voluptate nemo id iusto, possimus odio, illo laborum. Cum, modi? Voluptatum, maiores harum.</p>
-            <div class="tecnologias">
-              <p class="m-0">Tecnologias: <span>HTML, CSS(Sass), PHP, MySQL</span></p>
-            </div>
-          </div>
-        </div><!-- .trabajo -->
-        <div class="row rounded shadow border p-1 mb-4 trabajo">
-          <figure class="col-12 col-md-4 trabajo__imagen">
-            <img src="./assets/img/angelarium-400.jpg" alt="angelarium">
-          </figure>
-          <div class="col-12 col-md-8 p-3 trabajo__info">
-            <a class="enlace" href="https://arcangeluz.com" target="_blank">
-              <h4>Arcangeluz</h4>
-            </a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, quasi quia sapiente in eveniet minima itaque odit ut hic eos illum rem consectetur, velit excepturi quibusdam quisquam voluptate nemo id iusto, possimus odio, illo laborum. Cum, modi? Voluptatum, maiores harum.</p>
-            <div class="tecnologias">
-              <p class="m-0">Tecnologias: <span>HTML, CSS(Sass), PHP, MySQL</span></p>
-            </div>
-          </div>
-        </div><!-- .trabajo -->
+          </div><!-- .trabajo -->
+        {% endfor %}
       </div><!-- .trabajos -->
   </div><!-- .container -->
 </section><!-- sección portafolio -->

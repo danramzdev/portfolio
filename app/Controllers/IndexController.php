@@ -2,17 +2,19 @@
 
 namespace App\Controllers;
 
-use App\Models\{Knowledge, About};
+use App\Models\{Knowledge, About, Portfolio};
 
 class IndexController extends BaseController {
   public function getIndex() {
     $knowledges = Knowledge::all();
     $about = About::where('id', 1)->first();
+    $portfolios = Portfolio::all();
     $about->birth = $this->birthSpanish($about->birth);
 
     return $this->renderHTML('index.twig', [
       'knowledges' => $knowledges,
       'about' => $about,
+      'portfolios' => $portfolios,
     ]);
   }
 

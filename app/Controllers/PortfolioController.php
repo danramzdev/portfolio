@@ -17,7 +17,8 @@ class PortfolioController extends BaseController {
 			$portfolioValidator = v::key('name', v::stringType()->length(1,32))
 				->key('technologies', v::stringType()->notEmpty())
 				->key('description', v::stringType()->notEmpty())
-				->key('link', v::stringType());
+        ->key('link', v::url())
+        ->key('image', v::url());
 			try {
 				$portfolioValidator->assert($data);
 
@@ -25,7 +26,8 @@ class PortfolioController extends BaseController {
 				$portfolio->name = $data['name'];
 				$portfolio->technologies = $data['technologies'];
 				$portfolio->description = $data['description'];
-				$portfolio->link = $data['link'];
+        $portfolio->link = $data['link'];
+        $portfolio->image = $data['image'];
 				$portfolio->save();
 
 				$msg = [
