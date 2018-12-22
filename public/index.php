@@ -20,56 +20,85 @@ $map->get('index', '/', [
   'controller' => 'App\Controllers\IndexController',
   'action' => 'getIndex'
 ]);
+//Rutas de usuarios
+$map->get('getLogin', '/login', [
+  'controller' => 'App\Controllers\UsersController',
+  'action' => 'getLogin'
+]);
+$map->post('login', '/login', [
+  'controller' => 'App\Controllers\UsersController',
+  'action' => 'getLogin'
+]);
+$map->get('getRegister', '/registrar', [
+  'controller' => 'App\Controllers\UsersController',
+  'action' => 'getRegister'
+]);
+$map->post('register', '/registrar', [
+  'controller' => 'App\Controllers\UsersController',
+  'action' => 'getRegister'
+]);
 //Rutas de conocimiento
 $map->get('knowledge', '/conocimiento', [
   'controller' => 'App\Controllers\KnowledgesController',
-  'action' => 'getKnowledgeForm'
+  'action' => 'getKnowledgeForm',
+  'auth' => true
 ]);
 $map->post('addKnowledge', '/conocimiento/subir', [
   'controller' => 'App\Controllers\KnowledgesController',
-  'action' => 'addKnowledge'
+  'action' => 'addKnowledge',
+  'auth' => true
 ]);
 $map->get('getEditKnowledge', '/conocimiento/editar/{id}', [
   'controller' => 'App\Controllers\KnowledgesController',
-  'action' => 'getEditKnowledge'
+  'action' => 'getEditKnowledge',
+  'auth' => true
 ]);
 $map->post('editKnowledge', '/conocimiento/editar/{id}', [
   'controller' => 'App\Controllers\KnowledgesController',
-  'action' => 'getEditKnowledge'
+  'action' => 'getEditKnowledge',
+  'auth' => true
 ]);
 $map->get('deleteKnowledge', '/conocimiento/eliminar/{id}', [
   'controller' => 'App\Controllers\KnowledgesController',
-  'action' => 'deleteKnowledge'
+  'action' => 'deleteKnowledge',
+  'auth' => true
 ]);
 //Rutas de sobre mi
 $map->get('about', '/sobre', [
   'controller' => 'App\Controllers\AboutsController',
-  'action' => 'getAbout'
+  'action' => 'getAbout',
+  'auth' => true
 ]);
 $map->post('aboutSave', '/sobre', [
   'controller' => 'App\Controllers\AboutsController',
-  'action' => 'getAbout'
+  'action' => 'getAbout',
+  'auth' => true
 ]);
 //Ruta de portafolio
 $map->get('portfolio', '/portafolio', [
 	'controller' => 'App\Controllers\PortfoliosController',
-	'action' => 'getPortfolio'
+  'action' => 'getPortfolio',
+  'auth' => true
 ]);
 $map->post('addPortfolio', '/portafolio/subir', [
 	'controller' => 'App\Controllers\PortfoliosController',
-	'action' => 'addPortfolio'
+  'action' => 'addPortfolio',
+  'auth' => true
 ]);
 $map->get('getEditPortfolio', '/portafolio/editar/{id}', [
 	'controller' => 'App\Controllers\PortfoliosController',
-	'action' => 'getEditPortfolio'
+  'action' => 'getEditPortfolio',
+  'auth' => true
 ]);
 $map->post('editPortfolio', '/portafolio/editar/{id}', [
 	'controller' => 'App\Controllers\PortfoliosController',
-	'action' => 'getEditPortfolio'
+  'action' => 'getEditPortfolio',
+  'auth' => true
 ]);
 $map->get('deletePortfolio', '/portafolio/eliminar/{id}', [
 	'controller' => 'App\Controllers\PortfoliosController',
-	'action' => 'deletePortfolio'
+  'action' => 'deletePortfolio',
+  'auth' => true
 ]);
 
 $matcher = $routerContainer->getMatcher();
@@ -87,5 +116,12 @@ if (!$route) {
   $controller = new $controllerName;
   $response = $controller->$actionName($request, $route);
 
+  foreach ($response->getHeaders() as $name => $values) {
+    foreach ($values as $value) {
+      header(sprintf('%s: %s', $name, $value), false);
+    }
+  }
+
+  http_response_code($response->getStatusCode());
   echo $response->getBody();
 }

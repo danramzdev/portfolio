@@ -17,9 +17,8 @@ class KnowledgesController extends BaseController {
   }
 
   public function addKnowledge($request) {
-    $data = $request->getParsedBody();
-
     if ($request->getMethod() == 'POST') {
+      $data = $request->getParsedBody();
       $knowledgeExist = Knowledge::where('knowledge', $data['knowledge'])->first();
 
       if (!$knowledgeExist) {
