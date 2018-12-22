@@ -5,6 +5,8 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 use Aura\Router\RouterContainer;
 use App\Controllers\ErrorController;
 
+session_start();
+
 $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
     $_SERVER,
     $_GET,
@@ -112,6 +114,13 @@ if (!$route) {
   $handler = $route->handler;
   $controllerName = $handler['controller'];
   $actionName = $handler['action'];
+  $needsAuth = $handler['auth'] ?? false;
+  $sessionUser = $_SESSION['userId'] ?? null;
+
+  if ($needsAuth && !$sessionUser) {
+    $controllerName = new ErrorController();
+    $actionName = 'get404';
+  }
 
   $controller = new $controllerName;
   $response = $controller->$actionName($request, $route);

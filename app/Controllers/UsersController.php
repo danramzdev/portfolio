@@ -15,6 +15,7 @@ class UsersController extends BaseController {
 
       if ($user) {
         if (password_verify($data['password'], $user->password)) {
+          $_SESSION['userId'] = $user->id;
           return new RedirectResponse('/');
         } else {
           $this->msg = 'El email o contraseña no coinciden';
@@ -71,5 +72,10 @@ class UsersController extends BaseController {
     return $this->renderHTML('users/register.twig', [
       'msg' => $this->msg
     ]);
+  }
+
+  public function getLogout() {
+    unset($_SESSION['userId']);
+    return new RedirectResponse('/');
   }
 }
