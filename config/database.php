@@ -2,9 +2,6 @@
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-$dotenv = new Dotenv\Dotenv(__DIR__ . '../');
-$dotenv->load();
-
 $capsule = new Capsule;
 
 $capsule->addConnection([
