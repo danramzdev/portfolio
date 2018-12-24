@@ -27,6 +27,10 @@ $map->get('getLogin', '/login', [
   'controller' => 'App\Controllers\UsersController',
   'action' => 'getLogin'
 ]);
+$map->get('getLogout', '/logout', [
+  'controller' => 'App\Controllers\UsersController',
+  'action' => 'getLogout'
+]);
 $map->post('login', '/login', [
   'controller' => 'App\Controllers\UsersController',
   'action' => 'getLogin'

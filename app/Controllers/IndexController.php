@@ -11,10 +11,13 @@ class IndexController extends BaseController {
     $portfolios = Portfolio::all();
     $about->birth = $this->birthSpanish($about->birth);
 
+    $auth = $_SESSION['userId'] ?? null;
+
     return $this->renderHTML('index.twig', [
       'knowledges' => $knowledges,
       'about' => $about,
       'portfolios' => $portfolios,
+      'auth' => $auth
     ]);
   }
 
