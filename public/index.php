@@ -29,7 +29,8 @@ $map->get('getLogin', '/login', [
 ]);
 $map->get('getLogout', '/logout', [
   'controller' => 'App\Controllers\UsersController',
-  'action' => 'getLogout'
+  'action' => 'getLogout',
+  'auth' => true
 ]);
 $map->post('login', '/login', [
   'controller' => 'App\Controllers\UsersController',
@@ -37,11 +38,13 @@ $map->post('login', '/login', [
 ]);
 $map->get('getRegister', '/registrar', [
   'controller' => 'App\Controllers\UsersController',
-  'action' => 'getRegister'
+  'action' => 'getRegister',
+  'auth' => true
 ]);
 $map->post('register', '/registrar', [
   'controller' => 'App\Controllers\UsersController',
-  'action' => 'getRegister'
+  'action' => 'getRegister',
+  'auth' => true
 ]);
 //Rutas de conocimiento
 $map->get('knowledge', '/conocimiento', [
