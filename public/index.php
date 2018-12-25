@@ -7,9 +7,6 @@ use App\Controllers\ErrorController;
 
 session_start();
 
-$dotenv = new Dotenv\Dotenv(__DIR__ . '/..');
-$dotenv->load();
-
 $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
     $_SERVER,
     $_GET,
