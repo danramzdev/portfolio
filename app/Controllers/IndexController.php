@@ -9,7 +9,10 @@ class IndexController extends BaseController {
     $knowledges = Knowledge::all();
     $about = About::where('id', 1)->first();
     $portfolios = Portfolio::all();
-    $about->birth = $this->birthSpanish($about->birth);
+
+    if ($about) {
+			$about->birth = $this->birthSpanish($about->birth);
+		}
 
     $auth = $_SESSION['userId'] ?? null;
 

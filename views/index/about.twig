@@ -6,7 +6,8 @@
           <img class="figure-img img-fluid" src="/assets/img/foto.jpg" alt="Daniel Ramírez">
         </figure>
       </div>
-      <div class="contenido col-12 col-md-5">
+      {% if about %}
+        <div class="contenido col-12 col-md-5">
         <p>Hola a todos, Yo soy</p>
         <h1 class="font-weight-bold">{{ about.name }}</h2>
           <p class="lead">{{ about.degree }}</p>
@@ -35,6 +36,9 @@
             {% endif %}
           </div>
       </div>
+      {% else %}
+        <div class="pt-5 col-12 col-md-5">Rellena los campos de sobre mi para desplegar la información</div>
+      {% endif %}
     </div>
   </div>
 </section>
