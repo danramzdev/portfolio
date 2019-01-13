@@ -8,7 +8,10 @@ class AboutsController extends BaseController {
   protected $msg;
 
   public function getAbout($request) {
-    $about = About::where('id', 1)->first();
+    $about = About::find(1);
+    if (!$about) {
+    	$about = new About();
+		}
     $data = $request->getParsedBody();
 
     if ($request->getMethod() == 'POST') {
