@@ -3,8 +3,11 @@
 namespace App\Controllers;
 
 use App\Models\{Knowledge, About, Portfolio};
+use App\Traits\BirthSpanish;
 
 class IndexController extends BaseController {
+	use BirthSpanish;
+
   public function getIndex() {
     $knowledges = Knowledge::all();
     $about = About::find(1) ?? null;
@@ -22,16 +25,5 @@ class IndexController extends BaseController {
       'portfolios' => $portfolios,
       'auth' => $auth
     ]);
-  }
-
-  private function birthSpanish($birth) {
-		$time  = strtotime($birth);
-  	$year = date('Y', $time);
-  	$month = date('m', $time) - 1;
-  	$day = date('d', $time);
-
-  	$monthSpanish = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
-
-  	return "$day de $monthSpanish[$month] de $year";
   }
 }
