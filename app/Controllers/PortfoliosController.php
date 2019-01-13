@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Portfolio;
 use Respect\Validation\Validator as v;
+use Zend\Diactoros\ServerRequest;
 
 class PortfoliosController extends BaseController {
   protected $msg = [];
@@ -16,7 +17,7 @@ class PortfoliosController extends BaseController {
     ]);
 	}
 
-	public function addPortfolio($request) {
+	public function addPortfolio(ServerRequest $request) {
 		if ($request->getMethod() == 'POST') {
 			$data = $request->getParsedBody();
 			$portfolioValidator = v::key('name', v::stringType()->length(1,32))
@@ -52,7 +53,7 @@ class PortfoliosController extends BaseController {
 		]);
   }
   
-  public function getEditPortfolio($request, $route) {
+  public function getEditPortfolio(ServerRequest $request, $route) {
     $id = $route->attributes['id'];
     $edit_data = $this->portfolioById($id);
     $new_data = $request->getParsedBody();
@@ -69,7 +70,7 @@ class PortfoliosController extends BaseController {
     ));
   }
 
-  public function deletePortfolio($request, $route) {
+  public function deletePortfolio(ServerRequest $request, $route) {
     $id = $route->attributes['id'];
     $data = $this->portfolioById($id);
     $data->delete();
@@ -95,6 +96,6 @@ class PortfoliosController extends BaseController {
   }
 
   private function portfolioById($id) {
-    return Portfolio::where('id', $id)->first();
+    return Portfolio::find($id);
   }
 }

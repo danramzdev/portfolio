@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Knowledge;
+use Zend\Diactoros\ServerRequest;
 
 class KnowledgesController extends BaseController {
   protected $msg = '';
@@ -16,7 +17,7 @@ class KnowledgesController extends BaseController {
     ));
   }
 
-  public function addKnowledge($request) {
+  public function addKnowledge(ServerRequest $request) {
     if ($request->getMethod() == 'POST') {
       $data = $request->getParsedBody();
       $knowledgeExist = Knowledge::where('knowledge', $data['knowledge'])->first();
@@ -38,7 +39,7 @@ class KnowledgesController extends BaseController {
     ));
   }
 
-  public function getEditKnowledge($request, $route) {
+  public function getEditKnowledge(ServerRequest $request, $route) {
     $id = $route->attributes['id'];
     $edit_data = $this->knowledgeById($id);
     $new_data = $request->getParsedBody();
@@ -55,7 +56,7 @@ class KnowledgesController extends BaseController {
     ));
   }
 
-  public function deleteKnowledge($request, $route) {
+  public function deleteKnowledge(ServerRequest $request, $route) {
     $id = $route->attributes['id'];
     $data = $this->knowledgeById($id);
     $data->delete();
@@ -75,6 +76,6 @@ class KnowledgesController extends BaseController {
   }
 
   private function knowledgeById($id) {
-    return Knowledge::where('id', $id)->first();
+    return Knowledge::find($id);
   }
 }

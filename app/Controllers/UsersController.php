@@ -4,11 +4,12 @@ namespace App\Controllers;
 
 use App\Models\User;
 use Zend\Diactoros\Response\RedirectResponse;
+use Zend\Diactoros\ServerRequest;
 
 class UsersController extends BaseController {
   protected $msg = [];
 
-  public function getLogin($request) {
+  public function getLogin(ServerRequest $request) {
     if ($request->getMethod() == 'POST') {
       $data = $request->getParsedBody();
       $user = User::where('email', $data['email'])->first();
@@ -28,7 +29,7 @@ class UsersController extends BaseController {
     return $this->renderHTML('users/login.twig');
   }
 
-  public function getRegister($request) {
+  public function getRegister(ServerRequest $request) {
     if ($request->getMethod() == 'POST') {
       $data = $request->getParsedBody();
       $usernameExist = User::where('username', $data['username'])->first();

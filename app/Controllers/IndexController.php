@@ -7,7 +7,7 @@ use App\Models\{Knowledge, About, Portfolio};
 class IndexController extends BaseController {
   public function getIndex() {
     $knowledges = Knowledge::all();
-    $about = About::where('id', 1)->first();
+    $about = About::find(1) ?? null;
     $portfolios = Portfolio::all();
 
     if ($about) {

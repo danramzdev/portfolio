@@ -3,11 +3,12 @@
 namespace App\Controllers;
 
 use App\Models\About;
+use Zend\Diactoros\ServerRequest;
 
 class AboutsController extends BaseController {
   protected $msg;
 
-  public function getAbout($request) {
+  public function getAbout(ServerRequest $request) {
     $about = About::find(1);
     if (!$about) {
     	$about = new About();
