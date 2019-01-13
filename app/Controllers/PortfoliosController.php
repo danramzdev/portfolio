@@ -53,9 +53,9 @@ class PortfoliosController extends BaseController {
 		]);
   }
   
-  public function getEditPortfolio(ServerRequest $request, $route) {
-    $id = $route->attributes['id'];
-    $edit_data = $this->portfolioById($id);
+  public function getEditPortfolio(ServerRequest $request) {
+    $params = $request->getQueryParams();
+    $edit_data = $this->portfolioById($params['id']);
     $new_data = $request->getParsedBody();
 
     if ($request->getMethod() == 'POST') {
@@ -64,15 +64,15 @@ class PortfoliosController extends BaseController {
 
     return $this->renderHTML('admin/portfolio.twig', array(
       'edit' => true,
-      'id' => $id,
+      'id' => $params['id'],
       'editData' => $edit_data,
       'msg' => $this->msg
     ));
   }
 
-  public function deletePortfolio(ServerRequest $request, $route) {
-    $id = $route->attributes['id'];
-    $data = $this->portfolioById($id);
+  public function deletePortfolio(ServerRequest $request) {
+    $params = $request->getQueryParams();
+    $data = $this->portfolioById($params['id']);
     $data->delete();
 
     $this->msg = 'Portafolio eliminado';

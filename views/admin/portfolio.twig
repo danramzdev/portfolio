@@ -12,7 +12,7 @@
         </div>
       </div>
       {% if edit %}
-        <form action="/portafolio/editar/{{ editData['id'] }}" method="post">
+        <form action="/portafolio/editar?id={{ editData['id'] }}" method="post">
       {% else %}
         <form action="/portafolio/subir" method="post">
       {% endif %}
@@ -91,10 +91,10 @@
                   <td>{{ portfolio.image }}</td>
                   <td>{{ portfolio.description }}</td>
                   <td>
-                    <a class="mr-1" href="/portafolio/editar/{{ portfolio.id }}">
+                    <a class="mr-1" href="/portafolio/editar?id={{ portfolio.id }}">
                       <i data-eva="edit-outline" data-eva-fill="blue"></i>
                     </a>
-                    <a href="/portafolio/eliminar/{{ portfolio.id }}">
+                    <a href="/portafolio/eliminar?id={{ portfolio.id }}">
                       <i data-eva="trash-2-outline" data-eva-fill="red"></i>
                     </a>
                   </td>

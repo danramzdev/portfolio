@@ -39,9 +39,9 @@ class KnowledgesController extends BaseController {
     ));
   }
 
-  public function getEditKnowledge(ServerRequest $request, $route) {
-    $id = $route->attributes['id'];
-    $edit_data = $this->knowledgeById($id);
+  public function getEditKnowledge(ServerRequest $request) {
+    $params = $request->getQueryParams();
+    $edit_data = $this->knowledgeById($params['id']);
     $new_data = $request->getParsedBody();
 
     if ($request->getMethod() == 'POST') {
@@ -50,15 +50,15 @@ class KnowledgesController extends BaseController {
 
     return $this->renderHTML('admin/knowledge.twig', array(
       'edit' => true,
-      'id' => $id,
+      'id' => $params['id'],
       'editData' => $edit_data,
       'msg' => $this->msg
     ));
   }
 
-  public function deleteKnowledge(ServerRequest $request, $route) {
-    $id = $route->attributes['id'];
-    $data = $this->knowledgeById($id);
+  public function deleteKnowledge(ServerRequest $request) {
+		$params = $request->getQueryParams();
+    $data = $this->knowledgeById($params['id']);
     $data->delete();
 
     $this->msg = 'Conocimiento eliminado';

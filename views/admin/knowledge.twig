@@ -16,7 +16,7 @@
         {% endif %}
         <div class="row">
           {% if edit %}
-            <form class="col-4 mx-auto" action="/conocimiento/editar/{{ editData['id'] }}" method="post">
+            <form class="col-4 mx-auto" action="/conocimiento/editar?id={{ editData['id'] }}" method="post">
           {% else %}
             <form class="col-4 mx-auto" action="/conocimiento/subir" method="post">
           {% endif %}
@@ -66,10 +66,10 @@
                   <td>{{ knowledge.knowledge }}</td>
                   <td>{{ knowledge.percentage }}</td>
                   <td>
-                    <a class="mr-1" href="/conocimiento/editar/{{ knowledge.id }}">
+                    <a class="mr-1" href="/conocimiento/editar?id={{ knowledge.id }}">
                       <i data-eva="edit-outline" data-eva-fill="blue"></i>
                     </a>
-                    <a href="/conocimiento/eliminar/{{ knowledge.id }}">
+                    <a href="/conocimiento/eliminar?id={{ knowledge.id }}">
                       <i data-eva="trash-2-outline" data-eva-fill="red"></i>
                     </a>
                   </td>

@@ -57,17 +57,17 @@ $map->post('addKnowledge', '/conocimiento/subir', [
   'action' => 'addKnowledge',
   'auth' => true
 ]);
-$map->get('getEditKnowledge', '/conocimiento/editar/{id}', [
+$map->get('getEditKnowledge', '/conocimiento/editar', [
   'controller' => 'App\Controllers\KnowledgesController',
   'action' => 'getEditKnowledge',
   'auth' => true
 ]);
-$map->post('editKnowledge', '/conocimiento/editar/{id}', [
+$map->post('editKnowledge', '/conocimiento/editar', [
   'controller' => 'App\Controllers\KnowledgesController',
   'action' => 'getEditKnowledge',
   'auth' => true
 ]);
-$map->get('deleteKnowledge', '/conocimiento/eliminar/{id}', [
+$map->get('deleteKnowledge', '/conocimiento/eliminar', [
   'controller' => 'App\Controllers\KnowledgesController',
   'action' => 'deleteKnowledge',
   'auth' => true
@@ -94,17 +94,17 @@ $map->post('addPortfolio', '/portafolio/subir', [
   'action' => 'addPortfolio',
   'auth' => true
 ]);
-$map->get('getEditPortfolio', '/portafolio/editar/{id}', [
+$map->get('getEditPortfolio', '/portafolio/editar', [
 	'controller' => 'App\Controllers\PortfoliosController',
   'action' => 'getEditPortfolio',
   'auth' => true
 ]);
-$map->post('editPortfolio', '/portafolio/editar/{id}', [
+$map->post('editPortfolio', '/portafolio/editar', [
 	'controller' => 'App\Controllers\PortfoliosController',
   'action' => 'getEditPortfolio',
   'auth' => true
 ]);
-$map->get('deletePortfolio', '/portafolio/eliminar/{id}', [
+$map->get('deletePortfolio', '/portafolio/eliminar', [
 	'controller' => 'App\Controllers\PortfoliosController',
   'action' => 'deletePortfolio',
   'auth' => true
@@ -130,7 +130,7 @@ if (!$route) {
   }
 
   $controller = new $controllerName;
-  $response = $controller->$actionName($request, $route);
+  $response = $controller->$actionName($request);
 
   foreach ($response->getHeaders() as $name => $values) {
     foreach ($values as $value) {
