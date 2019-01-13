@@ -46,7 +46,7 @@ button.navbar-toggler:focus {
 
 .seccion-blanca {
 	position: absolute;
-	height: 300px;
+	height: 350px;
 	z-index: -1;
 	top: 350px;
 }
