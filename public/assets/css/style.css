@@ -2,6 +2,10 @@
   --bg-linear-gradient: linear-gradient(to right, #137ed6, #00dbd7);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   height: 100vh;
   font-family: 'Roboto', serif;
