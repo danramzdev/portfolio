@@ -5,7 +5,8 @@ namespace App\Traits;
 
 trait BirthSpanish
 {
-	private function birthSpanish($birth) {
+	private function birthSpanish($birth)
+	{
 		$time  = strtotime($birth);
 		$year = date('Y', $time);
 		$month = date('m', $time) - 1;

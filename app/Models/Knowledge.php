@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
-class Knowledge extends BaseModel {
-  protected $table = 'knowledges';
+class Knowledge extends BaseModel
+{
+	protected $table = 'knowledges';
 }

@@ -1,6 +1,10 @@
 {
+  "name": "portafolio",
+  "description": "portafolio personal",
   "autoload": {
-    "files": ["config/database.php"],
+    "files": [
+      "config/database.php"
+    ],
     "psr-4": {
       "App\\": "app/"
     }
