@@ -7,37 +7,42 @@
         </figure>
       </div>
       {% if about %}
-        <div class="contenido col-12 col-md-5">
+      <div class="contenido col-12 col-md-5">
         <p>Hola a todos, Yo soy</p>
         <h1 class="font-weight-bold">{{ about.name }}</h2>
           <p class="lead">{{ about.degree }}</p>
           <div class="datos">
             <p><i data-eva="calendar-outline" data-eva-fill="#137ed6"></i>{{ about.birth }}</p>
-            <p><i data-eva="phone-outline" data-eva-fill="#137ed6"></i>+{{ about.phone_ext }} {{ about.phone_number }}</p>
+            <p><i data-eva="phone-outline" data-eva-fill="#137ed6"></i>+{{ about.phone_ext }} {{ about.phone_number }}
+            </p>
             <p><i data-eva="email-outline" data-eva-fill="#137ed6"></i>{{ about.email }}</p>
             <p><i data-eva="home-outline" data-eva-fill="#137ed6"></i>{{ about.city }}, {{ about.state }}</p>
           </div>
           <div class="redes-sociales text-center mt-4">
             {% if about.github_link %}
-              <a class="bg-primary p-2 rounded d-inline-block mx-1" target="_blank" href="{{ about.github_link }}"><i data-eva="github-outline" data-eva-fill="white"></i>
-              </a>
+            <a class="bg-primary p-2 rounded d-inline-block mx-1" target="_blank" href="{{ about.github_link }}"><i
+                data-eva="github-outline" data-eva-fill="white"></i>
+            </a>
             {% endif %}
             {% if about.twitter_link %}
-            <a class="bg-primary p-2 rounded d-inline-block mx-1" target="_blank" href="{{ about.twitter_link }}"><i data-eva="twitter-outline" data-eva-fill="white"></i>
+            <a class="bg-primary p-2 rounded d-inline-block mx-1" target="_blank" href="{{ about.twitter_link }}"><i
+                data-eva="twitter-outline" data-eva-fill="white"></i>
             </a>
             {% endif %}
             {% if about.linkedin_link %}
-            <a class="bg-primary p-2 rounded d-inline-block mx-1" target="_blank" href="{{ about.linkedin_link }}"><i data-eva="linkedin-outline" data-eva-fill="white"></i>
+            <a class="bg-primary p-2 rounded d-inline-block mx-1" target="_blank" href="{{ about.linkedin_link }}"><i
+                data-eva="linkedin-outline" data-eva-fill="white"></i>
             </a>
             {% endif %}
             {% if about.facebook_link %}
-            <a class="bg-primary p-2 rounded d-inline-block mx-1" target="_blank" href="{{ about.facebook_link }}"><i data-eva="facebook-outline" data-eva-fill="white"></i>
+            <a class="bg-primary p-2 rounded d-inline-block mx-1" target="_blank" href="{{ about.facebook_link }}"><i
+                data-eva="facebook-outline" data-eva-fill="white"></i>
             </a>
             {% endif %}
           </div>
       </div>
       {% else %}
-        <div class="pt-5 col-12 col-md-5">Rellena los campos de sobre mi para desplegar la información</div>
+      <div class="pt-5 col-12 col-md-5">Rellena los campos de sobre mi para desplegar la información</div>
       {% endif %}
     </div>
   </div>
@@ -53,9 +58,9 @@
         <h2 class="font-weight-bold mb-5">SOBRE MI</h2>
         <p class="sobre-mi__texto text-secondary">
           {% if about.description %}
-            {{ about.description }}
+          {{ about.description }}
           {% else %}
-            No has escrito una descripción tuya.
+          No has escrito una descripción tuya.
           {% endif %}
         </p>
       </div>

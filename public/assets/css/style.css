@@ -8,7 +8,7 @@ html {
 
 body {
   height: 100vh;
-  font-family: 'Roboto', serif;
+  font-family: "Roboto", serif;
   font-size: 16px;
 }
 
@@ -21,38 +21,38 @@ button.navbar-toggler:focus {
 }
 
 .datos-personales .imagen {
-	margin: 0;
-	height: 450px;
-	overflow: hidden;
+  margin: 0;
+  height: 450px;
+  overflow: hidden;
 }
 
 .datos-personales .imagen img {
-	position: relative;
-	top: -100px;
+  position: relative;
+  top: -100px;
 }
 
 .datos-personales .contenido > p:first-child {
-	margin: 20px 0 5px;
+  margin: 20px 0 5px;
 }
 
 .datos-personales .contenido .datos p {
-	margin-bottom: 6px;
-	font-size: 18px;
+  margin-bottom: 6px;
+  font-size: 18px;
 }
 
 .datos-personales .contenido .datos p > svg {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 
 .datos-personales .contenido .redes-sociales a {
-	padding-bottom: 10px
+  padding-bottom: 10px;
 }
 
 .seccion-blanca {
-	position: absolute;
-	height: 350px;
-	z-index: -1;
-	top: 350px;
+  position: absolute;
+  height: 350px;
+  z-index: -1;
+  top: 350px;
 }
 
 .sobre-mi .sobre-mi__texto {
@@ -85,7 +85,8 @@ button.navbar-toggler:focus {
   color: white;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
   background-color: white;
   color: #2e2e2e;
   transition-duration: 0.3s;
@@ -110,7 +111,7 @@ button.navbar-toggler:focus {
 }
 
 .cronologia__elemento span {
-  margin: 0 30px
+  margin: 0 30px;
 }
 
 .rombo {
@@ -130,7 +131,7 @@ button.navbar-toggler:focus {
   margin-bottom: 0 !important;
 }
 
-.portafolio .trabajos .trabajo:nth-child(even) .trabajo__imagen{
+.portafolio .trabajos .trabajo:nth-child(even) .trabajo__imagen {
   order: 2;
 }
 
@@ -152,7 +153,7 @@ button.navbar-toggler:focus {
     display: none;
   }
 
-  .portafolio .trabajos .trabajo:nth-child(even) .trabajo__imagen{
+  .portafolio .trabajos .trabajo:nth-child(even) .trabajo__imagen {
     order: 0;
   }
 }
