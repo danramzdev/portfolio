@@ -157,3 +157,22 @@ button.navbar-toggler:focus {
     order: 0;
   }
 }
+
+@media screen and (max-width: 368px) {
+  .experiencia .experiencia__controles ul {
+    justify-content: center;
+  }
+
+  .experiencia .experiencia__controles ul li {
+    width: 180px;
+    text-align: center;
+  }
+
+  .experiencia .experiencia__controles ul li:first-child {
+    margin-bottom: 10px;
+  }
+
+  .cronologia__elemento .fecha {
+    width: 135px;
+  }
+}
